@@ -59,7 +59,7 @@ ROOT_URLCONF = 'bot.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,11 +119,25 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+# MAIN_PROJECT = os.path.dirname(__file__)
+
+MAIN_PROJECT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+print(MAIN_PROJECT,"???????")
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
 
+# or, eg,
+STATIC_ROOT = os.path.join(MAIN_PROJECT, "/static")
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(MAIN_PROJECT, 'static/'),
+)
 
 CELERY_BROKER_URL = 'amqp://localhost'
 

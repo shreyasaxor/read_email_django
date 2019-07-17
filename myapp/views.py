@@ -8,3 +8,9 @@ from rest_framework.views import APIView
 class Test(APIView):
     def get(self,request,*args,**kwargs):
      return Response({"apple":"dsd"})
+
+
+
+class Index(APIView):
+    def get(self,request,*args,**kwargs):
+     return render(request,'index.html')
